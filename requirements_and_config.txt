@@ -1,0 +1,767 @@
+# requirements.txt - Python Dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+plotly>=5.15.0
+openpyxl>=3.1.0
+pyyaml>=6.0
+fuzzywuzzy>=0.18.0
+python-levenshtein>=0.21.0
+nltk>=3.8.0
+scipy>=1.10.0
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+sphinx>=7.1.0
+jupyter>=1.0.0
+seaborn>=0.12.0
+dash>=2.14.0
+streamlit>=1.25.0
+
+# requirements-dev.txt - Development Dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+pre-commit>=3.3.0
+sphinx>=7.1.0
+sphinx-rtd-theme>=1.3.0
+coverage>=7.3.0
+bandit>=1.7.0
+safety>=2.3.0
+
+---
+
+# package.json - JavaScript Dependencies
+{
+  "name": "financial-transaction-processor",
+  "version": "1.0.0",
+  "description": "Comprehensive financial data processing system with ML-powered categorization",
+  "main": "src/processor/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write src/",
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server --mode development",
+    "docs": "jsdoc src/ -d docs/",
+    "benchmark": "node benchmarks/performance.js"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5",
+    "lodash": "^4.17.21",
+    "d3": "^7.8.5",
+    "ml-matrix": "^6.10.7",
+    "ml-kmeans": "^1.1.0",
+    "natural": "^6.5.0",
+    "date-fns": "^2.30.0"
+  },
+  "devDependencies": {
+    "jest": "^29.6.0",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^9.1.0",
+    "babel-preset-env": "^1.7.0",
+    "jsdoc": "^4.0.0",
+    "benchmark": "^2.1.4"
+  },
+  "keywords": [
+    "financial-data",
+    "machine-learning",
+    "data-processing",
+    "transaction-analysis",
+    "duplicate-detection",
+    "visualization"
+  ],
+  "author": "Portfolio Demonstration",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/financial-transaction-processor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/financial-transaction-processor/issues"
+  },
+  "homepage": "https://github.com/yourusername/financial-transaction-processor#readme"
+}
+
+---
+
+# config/default.yaml - Default Configuration
+# Financial Transaction Processor Configuration
+
+# Data Processing Settings
+data_processing:
+  max_file_size_mb: 100
+  supported_formats: ["xlsx", "xls", "csv"]
+  encoding: "utf-8"
+  date_formats: 
+    - "%Y-%m-%d"
+    - "%m/%d/%Y"
+    - "%d/%m/%Y"
+  
+# Categorization Settings
+categorization:
+  ml_models:
+    enabled: true
+    confidence_threshold: 0.8
+    ensemble_voting: "soft"
+    cross_validation_folds: 5
+    test_size: 0.2
+    random_state: 42
+    
+  rule_engine:
+    enabled: true
+    fuzzy_matching: true
+    fuzzy_threshold: 85
+    keyword_matching: true
+    amount_based_rules: true
+    
+  categories:
+    custom_file: "config/custom_categories.yaml"
+    auto_discovery: true
+    min_confidence: 0.3
+
+# Duplicate Detection Settings
+duplicate_detection:
+  enabled: true
+  temporal_window_days: 5
+  amount_tolerance: 0.01
+  similarity_threshold: 0.85
+  description_weight: 0.6
+  amount_weight: 0.3
+  temporal_weight: 0.1
+  
+  algorithms:
+    fuzzy_matching: true
+    edit_distance: true
+    token_similarity: true
+    semantic_similarity: false  # Requires additional models
+
+# Machine Learning Settings
+machine_learning:
+  feature_extraction:
+    text_features: true
+    amount_features: true
+    temporal_features: true
+    account_features: true
+    
+  model_selection:
+    random_forest:
+      enabled: true
+      n_estimators: 100
+      max_depth: 10
+      min_samples_split: 5
+      
+    naive_bayes:
+      enabled: true
+      alpha: 1.0
+      
+    svm:
+      enabled: true
+      kernel: "rbf"
+      C: 1.0
+      gamma: "scale"
+      
+  training:
+    auto_retrain: false
+    retrain_threshold: 1000  # transactions
+    validation_split: 0.2
+    early_stopping: true
+
+# Visualization Settings
+visualization:
+  theme: "plotly_white"
+  color_palette: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"]
+  export_formats: ["html", "png", "pdf"]
+  interactive: true
+  
+  dashboard:
+    auto_refresh: false
+    max_transactions_display: 1000
+    chart_animations: true
+    
+  charts:
+    spending_trends:
+      enabled: true
+      period: "monthly"
+      
+    category_distribution:
+      enabled: true
+      chart_type: "pie"
+      
+    amount_histogram:
+      enabled: true
+      bins: 50
+      
+    timeline_view:
+      enabled: true
+      max_items: 100
+
+# Performance Settings
+performance:
+  parallel_processing: true
+  max_workers: 4
+  chunk_size: 1000
+  memory_limit_mb: 2048
+  
+  caching:
+    enabled: true
+    cache_dir: ".cache"
+    ttl_hours: 24
+
+# Logging Settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/processor.log"
+  max_file_size_mb: 10
+  backup_count: 5
+  
+  loggers:
+    data_loader: "DEBUG"
+    categorizer: "INFO"
+    duplicate_detector: "INFO"
+    visualizer: "WARNING"
+
+# Security Settings
+security:
+  validate_inputs: true
+  sanitize_descriptions: true
+  prevent_code_injection: true
+  max_description_length: 500
+
+# Export Settings
+export:
+  default_format: "xlsx"
+  include_raw_data: false
+  compression: true
+  
+  excel:
+    include_formulas: true
+    freeze_panes: true
+    auto_filter: true
+    
+  csv:
+    delimiter: ","
+    quote_char: "\""
+    encoding: "utf-8"
+
+---
+
+# config/custom_categories.yaml - Custom Category Definitions
+categories:
+  "Food & Dining":
+    keywords:
+      - "restaurant"
+      - "cafe"
+      - "coffee"
+      - "pizza"
+      - "burger"
+      - "taco"
+      - "doordash"
+      - "uber eats"
+      - "grubhub"
+      - "starbucks"
+      - "mcdonald"
+      - "subway"
+      - "chipotle"
+      - "panera"
+      - "dining"
+      - "food"
+      - "kitchen"
+      - "deli"
+      - "bakery"
+    
+    patterns:
+      - ".*restaurant.*"
+      - ".*cafe.*"
+      - ".*food.*"
+    
+    amount_ranges:
+      - min: 5
+        max: 100
+        confidence_boost: 0.1
+    
+    time_patterns:
+      - hours: [11, 12, 13, 18, 19, 20]  # Meal times
+        confidence_boost: 0.1
+
+  "Transportation":
+    keywords:
+      - "uber"
+      - "lyft"
+      - "taxi"
+      - "gas"
+      - "fuel"
+      - "parking"
+      - "metro"
+      - "bus"
+      - "train"
+      - "airline"
+      - "flight"
+      - "rental car"
+      - "auto"
+      - "vehicle"
+      - "shell"
+      - "exxon"
+      - "bp"
+      - "chevron"
+      - "speedway"
+      - "mobil"
+    
+    patterns:
+      - ".*gas.*station.*"
+      - ".*parking.*"
+      - ".*toll.*"
+    
+    amount_ranges:
+      - min: 10
+        max: 200
+        confidence_boost: 0.05
+
+  "Shopping":
+    keywords:
+      - "amazon"
+      - "target"
+      - "walmart"
+      - "costco"
+      - "store"
+      - "retail"
+      - "shopping"
+      - "clothing"
+      - "apparel"
+      - "electronics"
+      - "purchase"
+      - "ebay"
+      - "etsy"
+      - "best buy"
+      - "macy"
+      - "nordstrom"
+    
+    patterns:
+      - ".*amazon.*"
+      - ".*store.*"
+      - ".*retail.*"
+
+  "Utilities":
+    keywords:
+      - "electric"
+      - "water"
+      - "gas"
+      - "internet"
+      - "phone"
+      - "cable"
+      - "utility"
+      - "bill"
+      - "service"
+      - "provider"
+      - "connection"
+      - "comcast"
+      - "verizon"
+      - "at&t"
+      - "spectrum"
+    
+    time_patterns:
+      - days: [25, 26, 27, 28, 29, 30, 31, 1, 2, 3]  # End/start of month
+        confidence_boost: 0.2
+
+  "Healthcare":
+    keywords:
+      - "medical"
+      - "doctor"
+      - "pharmacy"
+      - "hospital"
+      - "clinic"
+      - "health"
+      - "dental"
+      - "vision"
+      - "prescription"
+      - "copay"
+      - "cvs"
+      - "walgreens"
+      - "rite aid"
+      - "kaiser"
+      - "blue cross"
+    
+    patterns:
+      - ".*medical.*"
+      - ".*pharmacy.*"
+      - ".*dental.*"
+
+  "Entertainment":
+    keywords:
+      - "movie"
+      - "theater"
+      - "concert"
+      - "streaming"
+      - "netflix"
+      - "spotify"
+      - "entertainment"
+      - "game"
+      - "recreation"
+      - "hobby"
+      - "disney"
+      - "hulu"
+      - "amazon prime"
+      - "youtube"
+    
+    time_patterns:
+      - days: [6, 7]  # Weekends
+        confidence_boost: 0.1
+
+  "Financial Services":
+    keywords:
+      - "bank"
+      - "atm"
+      - "fee"
+      - "interest"
+      - "loan"
+      - "credit"
+      - "investment"
+      - "financial"
+      - "advisor"
+      - "brokerage"
+      - "wells fargo"
+      - "chase"
+      - "bank of america"
+      - "citi"
+    
+    patterns:
+      - ".*fee.*"
+      - ".*interest.*"
+      - ".*bank.*"
+
+rules:
+  # Amount-based categorization rules
+  amount_rules:
+    - condition: "amount > 1000"
+      category: "Large Purchase"
+      confidence: 0.6
+      
+    - condition: "amount < 5 and amount > 0"
+      category: "Small Purchase"
+      confidence: 0.7
+      
+    - condition: "amount == round(amount, 2)"
+      confidence_boost: 0.05  # Round amounts are often bills
+
+  # Temporal rules
+  temporal_rules:
+    - condition: "day_of_month >= 25 or day_of_month <= 5"
+      categories: ["Utilities", "Rent", "Mortgage"]
+      confidence_boost: 0.1
+      
+    - condition: "hour >= 11 and hour <= 14"
+      categories: ["Food & Dining"]
+      confidence_boost: 0.05
+      
+    - condition: "is_weekend"
+      categories: ["Entertainment", "Shopping", "Food & Dining"]
+      confidence_boost: 0.05
+
+  # Description patterns
+  description_rules:
+    - pattern: "^atm.*"
+      category: "Cash Withdrawal"
+      confidence: 0.9
+      
+    - pattern: ".*refund.*"
+      category: "Refund"
+      confidence: 0.8
+      
+    - pattern: ".*transfer.*"
+      category: "Transfer"
+      confidence: 0.85
+      
+    - pattern: ".*payroll.*"
+      category: "Income"
+      confidence: 0.95
+
+---
+
+# .env.example - Environment Variables Template
+# Copy this file to .env and fill in your values
+
+# Database Configuration (if using database storage)
+DATABASE_URL=sqlite:///financial_data.db
+# DATABASE_URL=postgresql://user:password@localhost/financial_db
+
+# API Keys (for external services)
+OPENAI_API_KEY=your_openai_api_key_here
+PLAID_CLIENT_ID=your_plaid_client_id
+PLAID_SECRET=your_plaid_secret
+
+# Security Settings
+SECRET_KEY=your_secret_key_here
+ENCRYPTION_KEY=your_encryption_key_here
+
+# File Storage
+UPLOAD_FOLDER=data/uploads
+OUTPUT_FOLDER=data/output
+TEMP_FOLDER=data/temp
+
+# Performance Settings
+MAX_WORKERS=4
+MEMORY_LIMIT_MB=2048
+
+# Logging
+LOG_LEVEL=INFO
+LOG_FILE=logs/app.log
+
+# Feature Flags
+ENABLE_ML_MODELS=true
+ENABLE_CLOUD_STORAGE=false
+ENABLE_API_RATE_LIMITING=true
+
+# External Services
+ENABLE_EMAIL_NOTIFICATIONS=false
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+EMAIL_USER=your_email@example.com
+EMAIL_PASSWORD=your_app_password
+
+---
+
+# docker-compose.yml - Docker Configuration
+version: '3.8'
+
+services:
+  financial-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/financial_db
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: financial_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - financial-processor
+
+volumes:
+  postgres_data:
+  redis_data:
+
+---
+
+# Dockerfile - Container Configuration
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    libffi-dev \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Create necessary directories
+RUN mkdir -p data/uploads data/output data/temp logs
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+# Expose port
+EXPOSE 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD python -c "import requests; requests.get('http://localhost:8000/health')"
+
+# Run application
+CMD ["python", "-m", "uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+---
+
+# .github/workflows/ci.yml - CI/CD Pipeline
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-python:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+    
+    - name: Lint with flake8
+      run: |
+        flake8 python/ --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 python/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    
+    - name: Type checking with mypy
+      run: mypy python/
+    
+    - name: Security check with bandit
+      run: bandit -r python/
+    
+    - name: Test with pytest
+      run: |
+        pytest python/tests/ --cov=python/processor --cov-report=xml --cov-report=term-missing
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: true
+
+  test-javascript:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: javascript/package-lock.json
+    
+    - name: Install dependencies
+      working-directory: ./javascript
+      run: npm ci
+    
+    - name: Lint with ESLint
+      working-directory: ./javascript
+      run: npm run lint
+    
+    - name: Run tests
+      working-directory: ./javascript
+      run: npm run test:coverage
+    
+    - name: Build production bundle
+      working-directory: ./javascript
+      run: npm run build
+
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+    
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+  deploy:
+    needs: [test-python, test-javascript, security-scan]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build Docker image
+      run: docker build -t financial-processor:latest .
+    
+    - name: Run security scan on Docker image
+      run: |
+        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+          -v $HOME/Library/Caches:/root/.cache/ \
+          aquasec/trivy:latest image financial-processor:latest
+    
+    - name: Deploy to staging
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Deploying to staging environment..."
+        # Add deployment commands here
